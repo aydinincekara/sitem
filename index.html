@@ -11,194 +11,201 @@
             --dark: #222831;
             --light: #EEEEEE;
             --grey: #393E46;
-            --modal-bg: rgba(0, 0, 0, 0.85);
+            --modal-bg: rgba(0, 0, 0, 0.9);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--dark); color: var(--light); line-height: 1.6; }
+        body { background-color: var(--dark); color: var(--light); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
 
-        /* Header & Genel Yapı (Önceki koddan korundu) */
+        /* Header */
         header {
-            height: 80vh; /* Biraz kısalttım */
+            height: 60vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            background: linear-gradient(rgba(34, 40, 49, 0.95), rgba(34, 40, 49, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1950&q=80');
+            background: linear-gradient(rgba(34, 40, 49, 0.95), rgba(34, 40, 49, 0.9)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1950&q=80');
             background-size: cover; border-bottom: 4px solid var(--primary);
         }
-        h1 { font-size: 3rem; }
-        h2 { font-size: 1.5rem; color: var(--primary); font-weight: 300; }
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 1.4rem; color: var(--primary); font-weight: 300; margin-top: 10px; }
         .highlight { color: var(--primary); font-weight: bold; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Container & Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; flex: 1; }
         .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 10px; }
         
-        /* Proje Kartları - GÜNCELLENDİ */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         
+        /* Kart Tasarımı */
         .project-card {
             background: var(--grey);
             border-radius: 10px;
-            overflow: visible; /* Badge dışarı taşarsa görünsün diye */
-            position: relative; /* Badge konumlandırması için */
+            position: relative; 
             border: 1px solid #444;
             transition: 0.3s;
-        }
-
-        .project-card:hover { border-color: var(--primary); transform: translateY(-3px); }
-
-        .project-content { padding: 25px 20px 60px 20px; /* Buton için alttan boşluk bıraktık */ }
-        .project-title { font-size: 1.3rem; color: var(--primary); margin-bottom: 10px; }
-        .tag { display: inline-block; background: #222; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; margin-right: 5px; margin-top: 10px; color: #aaa; }
-
-        /* --- YENİ EKLENEN KISIMLAR: VERSİYON SİSTEMİ --- */
-        
-        /* Sağ Üst Köşe Sürüm Rozeti */
-        .version-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0, 173, 181, 0.15);
-            color: var(--primary);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border: 1px solid var(--primary);
-        }
-
-        /* Geçmiş Butonu */
-        .history-btn {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: transparent;
-            color: var(--light);
-            border: 1px solid #666;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: 0.3s;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            flex-direction: column;
+        }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        
+        .project-content { padding: 25px 20px 70px 20px; flex-grow: 1; }
+        .project-title { font-size: 1.4rem; color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        /* Etiketler */
+        .tags-container { margin-top: 15px; }
+        .tag { display: inline-block; background: #222; padding: 5px 10px; border-radius: 4px; font-size: 0.75rem; margin-right: 5px; margin-bottom: 5px; color: #aaa; border: 1px solid #333; }
+
+        /* Rozetler ve Butonlar */
+        .version-badge {
+            position: absolute; top: 15px; right: 15px;
+            background: rgba(0, 173, 181, 0.1); color: var(--primary);
+            padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; border: 1px solid var(--primary);
         }
 
+        .history-btn {
+            position: absolute; bottom: 20px; right: 20px; left: 20px;
+            background: rgba(255,255,255,0.05); color: var(--light);
+            border: 1px solid #555; padding: 10px; border-radius: 5px;
+            cursor: pointer; font-size: 0.9rem; transition: 0.3s;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+        }
         .history-btn:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
 
-        /* MODAL (Açılır Pencere) TASARIMI */
+        /* MODAL */
         .modal-overlay {
-            display: none; /* Varsayılan olarak gizli */
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--modal-bg);
-            z-index: 1000;
-            justify-content: center; align-items: center;
-            backdrop-filter: blur(5px);
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--modal-bg); z-index: 1000;
+            justify-content: center; align-items: center; backdrop-filter: blur(5px);
         }
-
         .modal-content {
-            background: var(--grey);
-            width: 90%; max-width: 700px;
-            border-radius: 10px;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 0 30px rgba(0,173,181, 0.3);
-            border: 1px solid var(--primary);
+            background: var(--grey); width: 95%; max-width: 800px; max-height: 80vh; overflow-y: auto;
+            border-radius: 10px; padding: 30px; position: relative;
+            box-shadow: 0 0 40px rgba(0,173,181, 0.2); border: 1px solid var(--primary);
             animation: fadeIn 0.3s ease-in-out;
         }
-
-        .close-btn {
-            position: absolute; top: 15px; right: 20px;
-            font-size: 1.5rem; color: #aaa; cursor: pointer;
-        }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; color: #aaa; cursor: pointer; }
         .close-btn:hover { color: #fff; }
 
-        /* Modal İçindeki Tablo */
-        .version-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        .version-table th, .version-table td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid #555;
-            vertical-align: top;
-        }
-
-        .version-table th { color: var(--primary); border-bottom: 2px solid var(--primary); }
-        .version-table tr:last-child td { border-bottom: none; }
-        
-        .old-features { color: #999; font-size: 0.85rem; margin-bottom: 5px; }
-        .new-features { color: #fff; font-weight: bold; }
-        .plus-icon { color: var(--primary); margin-right: 5px; }
+        /* Tablo */
+        .version-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }
+        .version-table th, .version-table td { text-align: left; padding: 15px; border-bottom: 1px solid #555; vertical-align: top; }
+        .version-table th { color: var(--primary); border-bottom: 2px solid var(--primary); width: 20%; }
+        .old-features { color: #999; font-size: 0.85rem; margin-bottom: 8px; }
+        .new-features { color: #fff; font-weight: bold; display: flex; gap: 8px; }
+        .new-features i { color: var(--primary); margin-top: 4px; }
 
         @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
 
         /* Footer */
-        footer { text-align: center; padding: 20px; background: #1a1d24; margin-top: 50px; font-size: 0.9rem; }
+        footer {
+            background: #1a1d24; padding: 20px; margin-top: 50px;
+            border-top: 1px solid #333; display: flex; flex-direction: column; align-items: center; gap: 10px;
+        }
+        .site-version-control {
+            background: rgba(0,0,0,0.3); padding: 8px 20px; border-radius: 30px;
+            display: flex; align-items: center; gap: 15px; border: 1px solid #444;
+        }
+        .site-log-btn {
+            background: var(--primary); color: #fff; border: none; padding: 4px 12px; border-radius: 20px;
+            cursor: pointer; font-size: 0.8rem; font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>[Adınız Soyadınız]</h1>
-        <h2>Bilişim Teknolojileri Eğitmeni & Tasarımcı</h2>
+        <h2>Bilişim Teknolojileri Eğitmeni & Geliştirici</h2>
+        <p style="margin-top:15px; color:#aaa;">"Eğitimden Üretime Dijital Dönüşüm"</p>
     </header>
 
     <section class="container">
-        <div class="center-wrapper" style="text-align:center; margin-bottom:40px;">
-            <h2 class="section-title">Geliştirme Günlüğü</h2>
+        <div style="text-align:center; margin-bottom:40px;">
+            <h2 class="section-title">Aktif Projeler & Geliştirmeler</h2>
         </div>
         
         <div class="projects-grid">
             
             <div class="project-card">
-                <span class="version-badge" id="v-afi">v1.2.0</span>
+                <span class="version-badge">v3.5.0</span>
                 <div class="project-content">
-                    <h3 class="project-title">AFİ - AR Boyama</h3>
-                    <p>Çocuklar için Unity ve Vuforia tabanlı mobil AR boyama kitabı uygulaması.</p>
-                    <span class="tag">Unity</span> <span class="tag">Vuforia</span>
+                    <h3 class="project-title"><i class="fas fa-chalkboard-teacher"></i> Eğitmen Müfredatı</h3>
+                    <p>Bilişim öğretmenleri için hazırlanan; Kodlama, Yapay Zeka ve Robotik içeren 10 günlük yoğunlaştırılmış eğitim programı.</p>
+                    <div class="tags-container">
+                        <span class="tag">Eğitim</span><span class="tag">Python & C#</span><span class="tag">AI Araçları</span>
+                    </div>
                 </div>
-                <button class="history-btn" onclick="openModal('afi')">
-                    <i class="fas fa-code-branch"></i> Sürüm Detayları
-                </button>
+                <button class="history-btn" onclick="openModal('mufredat')"><i class="fas fa-list-ul"></i> Sürüm Notlarını Gör</button>
             </div>
 
             <div class="project-card">
-                <span class="version-badge" id="v-karanlik">v0.8.5</span>
+                <span class="version-badge">v1.2.1</span>
                 <div class="project-content">
-                    <h3 class="project-title">Karanlık İstasyon</h3>
-                    <p>Atmosferik korku oyunu. Işık ve gölge mekanikleri üzerine kurulu gerilim projesi.</p>
-                    <span class="tag">Unity 3D</span> <span class="tag">Game Design</span>
+                    <h3 class="project-title"><i class="fas fa-mobile-alt"></i> AFİ - AR Boyama</h3>
+                    <p>Quiver uygulamasından esinlenilen, çocukların boyadıkları resimleri canlandıran mobil Artırılmış Gerçeklik uygulaması.</p>
+                    <div class="tags-container">
+                        <span class="tag">Unity</span><span class="tag">Vuforia</span><span class="tag">C#</span>
+                    </div>
                 </div>
-                <button class="history-btn" onclick="openModal('karanlik')">
-                    <i class="fas fa-code-branch"></i> Sürüm Detayları
-                </button>
+                <button class="history-btn" onclick="openModal('afi')"><i class="fas fa-code-branch"></i> Sürüm Notlarını Gör</button>
             </div>
 
             <div class="project-card">
-                <span class="version-badge" id="v-eeg">v2.1.0</span>
+                <span class="version-badge">v0.9.0</span>
                 <div class="project-content">
-                    <h3 class="project-title">EEG Beyin Analizi</h3>
-                    <p>Mindware Mobile 2 ile beyin dalgalarının (Dikkat/Meditasyon) görselleştirilmesi.</p>
-                    <span class="tag">Biyo-Sensör</span> <span class="tag">Data Viz</span>
+                    <h3 class="project-title"><i class="fas fa-ghost"></i> Karanlık İstasyon</h3>
+                    <p>Unity ile geliştirilen, ışık/gölge mekaniklerine dayalı atmosferik korku ve gerilim oyunu.</p>
+                    <div class="tags-container">
+                        <span class="tag">Game Dev</span><span class="tag">Level Design</span><span class="tag">Lighting</span>
+                    </div>
                 </div>
-                <button class="history-btn" onclick="openModal('eeg')">
-                    <i class="fas fa-code-branch"></i> Sürüm Detayları
-                </button>
+                <button class="history-btn" onclick="openModal('karanlik')"><i class="fas fa-gamepad"></i> Sürüm Notlarını Gör</button>
             </div>
 
             <div class="project-card">
-                <span class="version-badge" id="v-mufredat">v3.0.0</span>
+                <span class="version-badge">v2.0.0</span>
                 <div class="project-content">
-                    <h3 class="project-title">Eğitmen Müfredatı</h3>
-                    <p>Bilişim öğretmenleri için kapsamlı Kodlama, AI ve Robotik eğitim planı.</p>
-                    <span class="tag">Eğitim</span> <span class="tag">Planlama</span>
+                    <h3 class="project-title"><i class="fas fa-file-excel"></i> Veri Temizleme Aracı</h3>
+                    <p>Öğrenci verilerini (Excel) standartlaştıran, hatalı telefon numaralarını ve yazım yanlışlarını otomatik düzelten araç.</p>
+                    <div class="tags-container">
+                        <span class="tag">Python</span><span class="tag">C# Console</span><span class="tag">Otomasyon</span>
+                    </div>
                 </div>
-                <button class="history-btn" onclick="openModal('mufredat')">
-                    <i class="fas fa-code-branch"></i> Sürüm Detayları
-                </button>
+                <button class="history-btn" onclick="openModal('veri_araci')"><i class="fas fa-cogs"></i> Sürüm Notlarını Gör</button>
+            </div>
+
+            <div class="project-card">
+                <span class="version-badge">v2.1.0</span>
+                <div class="project-content">
+                    <h3 class="project-title"><i class="fas fa-brain"></i> EEG Beyin Analizi</h3>
+                    <p>Mindware Mobile 2 cihazı ile beyin dalgalarını okuyup, Odaklanma ve Meditasyon seviyelerini görselleştiren Unity arayüzü.</p>
+                    <div class="tags-container">
+                        <span class="tag">Biyo-Sensör</span><span class="tag">Data Visualization</span>
+                    </div>
+                </div>
+                <button class="history-btn" onclick="openModal('eeg')"><i class="fas fa-chart-line"></i> Sürüm Notlarını Gör</button>
+            </div>
+
+            <div class="project-card">
+                <span class="version-badge">v1.0.1</span>
+                <div class="project-content">
+                    <h3 class="project-title"><i class="fas fa-globe"></i> Bilişim Sınıfı Portalı</h3>
+                    <p>Ders içerikleri, kaynaklar ve duyuruların paylaşıldığı, GitHub Pages üzerinde barındırılan statik web projesi.</p>
+                    <div class="tags-container">
+                        <span class="tag">HTML/CSS</span><span class="tag">GitHub Pages</span><span class="tag">Web</span>
+                    </div>
+                </div>
+                <button class="history-btn" onclick="openModal('web_portal')"><i class="fas fa-laptop-code"></i> Sürüm Notlarını Gör</button>
+            </div>
+
+            <div class="project-card">
+                <span class="version-badge">v1.0.0</span>
+                <div class="project-content">
+                    <h3 class="project-title"><i class="fas fa-shapes"></i> Roll-a-Ball (Eğitim)</h3>
+                    <p>Unity fizik motoru, kamera takibi ve temel C# script mantığını öğretmek için geliştirilen simülasyon projesi.</p>
+                    <div class="tags-container">
+                        <span class="tag">Unity Basics</span><span class="tag">Physics</span>
+                    </div>
+                </div>
+                <button class="history-btn" onclick="openModal('rollball')"><i class="fas fa-cube"></i> Sürüm Notlarını Gör</button>
             </div>
 
         </div>
@@ -207,98 +214,109 @@
     <div class="modal-overlay" id="versionModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle" style="margin-bottom: 20px; border-bottom:none;">Proje Geçmişi</h2>
-            
+            <h2 id="modalTitle" style="color:var(--light); border-bottom:none; margin-bottom:10px;">Proje Geçmişi</h2>
             <table class="version-table">
-                <thead>
-                    <tr>
-                        <th style="width: 20%;">Sürüm</th>
-                        <th>Geliştirme Notları (Kümülatif)</th>
-                    </tr>
-                </thead>
-                <tbody id="modalBody">
-                    </tbody>
+                <thead><tr><th>Sürüm</th><th>Geliştirme Notları (Changelog)</th></tr></thead>
+                <tbody id="modalBody"></tbody>
             </table>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 [Adınız Soyadınız] - Versiyon Kontrol Sistemi Entegre Edildi.</p>
+        <div class="site-version-control">
+            <span>Portfolio System: <span style="color:var(--primary); font-weight:bold;">v1.0.3</span></span>
+            <button class="site-log-btn" onclick="openModal('website')">Günlük</button>
+        </div>
+        <p>&copy; 2026 [Adınız Soyadınız] - Tüm veriler Gemini geçmişinden derlenmiştir.</p>
     </footer>
 
     <script>
-        // --- PROJE VERİLERİNİ BURADAN YÖNETEBİLİRSİN ---
-        // Her versiyonda önceki özellikler + yeni eklenenler mantığıyla yazılmıştır.
         const projectHistory = {
-            'afi': [
-                { version: 'v1.2.0', base: 'Kamera optimizasyonu ve UI düzeltmeleri.', new: 'Çoklu hedef takibi (Multi-Target) özelliği eklendi.' },
-                { version: 'v1.1.0', base: 'Temel boyama algılama sistemi.', new: 'Vuforia kütüphanesi entegre edildi, 3D modeller eklendi.' },
-                { version: 'v1.0.0', base: '-', new: 'Proje oluşturuldu. Unity ortamı hazırlandı.' }
-            ],
-            'karanlik': [
-                { version: 'v0.8.5', base: 'Harita tasarımı ve karakter kontrolcüsü.', new: 'Ses efektleri (SFX) ve Jump-scare tetikleyicileri eklendi.' },
-                { version: 'v0.5.0', base: 'Temel hareket mekanikleri.', new: 'El feneri mekaniği ve pil sistemi kodlandı.' }
-            ],
-            'eeg': [
-                { version: 'v2.1.0', base: 'Bluetooth bağlantısı stabil hale getirildi.', new: 'Gerçek zamanlı grafik çizimi (Graph Rendering) eklendi.' },
-                { version: 'v2.0.0', base: 'Ham veri okuma başarılı.', new: 'Dikkat ve Meditasyon algoritmaları ayrıştırıldı.' },
-                { version: 'v1.0.0', base: '-', new: 'Mindware Mobile 2 bağlantı testleri yapıldı.' }
-            ],
+            // 1. MÜFREDAT
             'mufredat': [
-                { version: 'v3.0.0', base: 'Python ve Robotik modülleri tamamlandı.', new: 'Yapay Zeka (Prompt Engineering) modülü eklendi.' },
-                { version: 'v2.0.0', base: 'Temel algoritma dersleri.', new: 'Python ile Veri Analizi bölümü eklendi.' },
-                { version: 'v1.0.0', base: '-', new: '10 Günlük taslak plan oluşturuldu.' }
+                { version: 'v3.5.0', base: 'Robotik ve Kodlama modülleri.', new: 'Yapay Zeka (Prompt Engineering) ve Bilişim Öğretmenleri için 10 günlük özel plan eklendi.' },
+                { version: 'v3.0.0', base: 'Temel C# dersleri.', new: 'Unity ile Oyun Geliştirme müfredatı entegre edildi.' },
+                { version: 'v2.0.0', base: 'Blok tabanlı kodlama.', new: 'Python Veri Yapıları ve Tkinter (GUI) modülleri eklendi.' }
+            ],
+            // 2. AFİ
+            'afi': [
+                { version: 'v1.2.1', base: 'Kamera optimizasyonu.', new: 'Unity Vuforia entegrasyonu ile "Quiver" benzeri karakter canlandırma özelliği.' },
+                { version: 'v1.1.0', base: 'Tekli hedef takibi.', new: 'Multi-Target (Çoklu Hedef) desteği ve UI butonları eklendi.' },
+                { version: 'v1.0.0', base: '-', new: 'Proje iskeleti oluşturuldu.' }
+            ],
+            // 3. KARANLIK İSTASYON
+            'karanlik': [
+                { version: 'v0.9.0', base: 'Harita dizaynı.', new: 'Ses efektleri (SFX), Jump-scare tetikleyicileri ve Post-Processing (Karanlık atmosfer).' },
+                { version: 'v0.5.0', base: 'Karakter hareketi.', new: 'El feneri pili mekaniği ve etkileşim sistemi.' }
+            ],
+            // 4. VERİ OTOMASYONU (YENİ)
+            'veri_araci': [
+                { version: 'v2.0.0', base: 'Python scripti.', new: 'Tamamen C# Console Uygulamasına dönüştürüldü. Performans artırıldı.' },
+                { version: 'v1.2.0', base: 'İsim düzeltme.', new: 'Telefon numarası formatlama (05xx...) ve hata raporlama eklendi.' },
+                { version: 'v1.0.0', base: '-', new: 'Python ile Excel okuma ve büyük harf düzeltme scripti yazıldı.' }
+            ],
+            // 5. EEG PROJESİ
+            'eeg': [
+                { version: 'v2.1.0', base: 'Bluetooth bağlantısı.', new: 'Unity UI üzerinde Attention/Meditation barlarının anlık değişimi görselleştirildi.' },
+                { version: 'v2.0.0', base: 'Ham veri.', new: 'Mindware Mobile 2 cihazından frekans verilerinin ayrıştırılması.' },
+                { version: 'v1.0.0', base: '-', new: 'Bağlantı protokolleri test edildi.' }
+            ],
+            // 6. WEB PORTALI (YENİ)
+            'web_portal': [
+                { version: 'v1.0.1', base: 'Ana sayfa.', new: 'GitHub Pages hosting ayarları yapıldı, ders materyalleri linklendi.' },
+                { version: 'v1.0.0', base: '-', new: 'HTML/CSS ile statik bilgilendirme sayfası oluşturuldu.' }
+            ],
+            // 7. ROLL-A-BALL (YENİ)
+            'rollball': [
+                { version: 'v1.0.0', base: '-', new: 'Fizik motoru (Rigidbody), top hareketi ve kamera takibi kodlandı. Eğitim amaçlı tamamlandı.' }
+            ],
+            // SİTE GEÇMİŞİ
+            'website': [
+                { version: 'v1.0.3', base: 'Versiyon sistemi.', new: 'Gemini geçmişinden "Veri Temizleme", "Web Portalı" ve "Eğitim Simülasyonları" verileri çekilerek eklendi.' },
+                { version: 'v1.0.2', base: 'Statik yapı.', new: 'Dinamik ChangeLog (Günlük) sistemi entegre edildi.' },
+                { version: 'v1.0.0', base: '-', new: 'Dark Mode arayüzü ile yayınlandı.' }
             ]
         };
 
-        // Modal Açma Fonksiyonu
-        function openModal(projectId) {
+        function openModal(id) {
             const modal = document.getElementById('versionModal');
             const title = document.getElementById('modalTitle');
             const tbody = document.getElementById('modalBody');
             
-            // Başlığı ayarla (Basitçe ID'yi büyük harf yapıp yazdırdım, istersen elle mapping yapabiliriz)
-            title.innerText = projectId.toUpperCase() + " - Sürüm Geçmişi";
+            // Başlık belirleme
+            const titles = {
+                'mufredat': 'Eğitmen Müfredat Gelişimi',
+                'afi': 'AFİ Proje Süreci',
+                'karanlik': 'Karanlık İstasyon DevLog',
+                'veri_araci': 'Veri Otomasyon Aracı',
+                'eeg': 'EEG Beyin Analizi',
+                'web_portal': 'Bilişim Sınıfı Portalı',
+                'rollball': 'Roll-a-Ball Eğitimi',
+                'website': 'Portföy Sitesi Günlüğü'
+            };
             
-            // Tabloyu temizle
+            title.innerText = titles[id] || (id.toUpperCase() + " Geçmişi");
             tbody.innerHTML = '';
-
-            // Verileri çek ve tabloya satır olarak ekle
-            const history = projectHistory[projectId];
             
+            const history = projectHistory[id];
             if (history) {
                 history.forEach(item => {
-                    const row = `
+                    tbody.innerHTML += `
                         <tr>
                             <td style="font-weight:bold; color:var(--primary);">${item.version}</td>
                             <td>
-                                <div class="old-features"><i class="fas fa-check"></i> Mevcut: ${item.base}</div>
-                                <div class="new-features"><i class="fas fa-plus plus-icon"></i> Yeni: ${item.new}</div>
+                                <div class="old-features"><i class="fas fa-check-circle"></i> Mevcut: ${item.base}</div>
+                                <div class="new-features"><i class="fas fa-plus-circle"></i> <span>Yeni: ${item.new}</span></div>
                             </td>
-                        </tr>
-                    `;
-                    tbody.innerHTML += row;
+                        </tr>`;
                 });
-            } else {
-                tbody.innerHTML = '<tr><td colspan="2">Veri bulunamadı.</td></tr>';
-            }
-
+            } else { tbody.innerHTML = '<tr><td colspan="2">Veri bulunamadı.</td></tr>'; }
+            
             modal.style.display = 'flex';
         }
 
-        // Modal Kapatma
-        function closeModal() {
-            document.getElementById('versionModal').style.display = 'none';
-        }
-
-        // Dışarı tıklayınca kapatma
-        window.onclick = function(event) {
-            const modal = document.getElementById('versionModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        function closeModal() { document.getElementById('versionModal').style.display = 'none'; }
+        window.onclick = function(e) { if (e.target == document.getElementById('versionModal')) closeModal(); }
     </script>
-
 </body>
 </html>
