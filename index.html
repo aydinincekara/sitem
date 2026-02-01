@@ -1,1 +1,293 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknoloji & Eğitim Portföyü</title>
+    <style>
+        :root {
+            --primary: #00ADB5; /* Canlı Turkuaz */
+            --dark: #222831;    /* Koyu Arka Plan */
+            --light: #EEEEEE;   /* Açık Yazı */
+            --grey: #393E46;    /* Kart Arka Planı */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(rgba(34, 40, 49, 0.9), rgba(34, 40, 49, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Bölüm Başlıkları */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .center-wrapper {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* Hakkımda */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .diplomas ul {
+            list-style: none;
+        }
+
+        .diplomas li {
+            background: var(--grey);
+            margin: 5px 0;
+            padding: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Yetenekler */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--grey);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Projeler */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--grey);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #222;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1d24;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Merhaba, Ben <span class="highlight">[Adınız Soyadınız]</span></h1>
+        <h2>Bilişim Teknolojileri Eğitmeni & Bölüm Başkanı</h2>
+        <p style="margin-top: 20px; font-style: italic;">"Teknolojiyi sadece öğreten değil, tasarlayan ve üreten bir vizyon."</p>
+    </header>
+
+    <section class="container">
+        <div class="center-wrapper">
+            <h2 class="section-title">Hakkımda</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    Yaklaşık 5 yılı aşkın süredir <strong>3D yazıcı teknolojileri</strong> ve dijital üretim süreçlerinde uzmanlaşmış bir Bilişim Öğretmeni ve Bölüm Başkanıyım. Halen <strong>Endüstriyel Tasarım</strong> lisans eğitimime Nişantaşı Üniversitesi'nde devam ederek teknik bilgimi tasarım vizyonuyla birleştiriyorum.
+                </p>
+                <p>
+                    Amacım; yazılım, donanım ve tasarımı bir araya getiren multidisipliner projeler üretmek ve yeni nesil bilişim öğretmenlerine rehberlik etmektir.
+                </p>
+            </div>
+            <div class="diplomas">
+                <h3>Eğitim & Sertifikalar</h3>
+                <ul>
+                    <li>💻 Yazılım Mühendisliği & Bilgisayar Programcılığı</li>
+                    <li>🛡️ Siber Güvenlik Uzmanlığı</li>
+                    <li>⚡ Endüstriyel Elektronik</li>
+                    <li>📈 İşletme</li>
+                    <li>🌐 Cisco CCNA Sertifikası</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="center-wrapper">
+            <h2 class="section-title">Uzmanlık Alanları</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">&lt;/&gt;</div>
+                <h3>Yazılım Geliştirme</h3>
+                <p>C# (İleri Seviye), Python (Veri & GUI), Unity Scripting.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🎮</div>
+                <h3>Oyun & Simülasyon</h3>
+                <p>Unity 3D, AR/VR Teknolojileri, Vuforia Entegrasyonu.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🖨️</div>
+                <h3>3D Tasarım & Üretim</h3>
+                <p>Blender, Fusion 360, Tersine Mühendislik (Geomagic), 3D Baskı.</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🧠</div>
+                <h3>Yapay Zeka & Donanım</h3>
+                <p>AI Entegrasyonu, Prompt Engineering, EEG (Mindware) & Arduino Projeleri.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="center-wrapper">
+            <h2 class="section-title">Güncel Projeler</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">AFİ - Artırılmış Gerçeklik Boyama</h3>
+                    <p>Çocuklar için geliştirilen, Unity ve Vuforia tabanlı mobil AR boyama kitabı uygulaması.</p>
+                    <span class="tag">Unity</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">AR / Vuforia</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Karanlık İstasyon</h3>
+                    <p>Unity oyun motoru ile geliştirilen, atmosferik ve gerilim odaklı bir korku oyunu projesi.</p>
+                    <span class="tag">Oyun Geliştirme</span>
+                    <span class="tag">3D Level Design</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">EEG Beyin Dalgası Analizi</h3>
+                    <p>Mindware Mobile 2 cihazı kullanılarak beyin dalgalarını (Dikkat, Meditasyon) görselleştiren Unity arayüzü.</p>
+                    <span class="tag">Biyo-Sensör</span>
+                    <span class="tag">Veri Görselleştirme</span>
+                </div>
+            </div>
+
+             <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">Eğitmen Müfredat Geliştirme</h3>
+                    <p>Bilişim öğretmenleri için A'dan Z'ye (Kodlama, AI, Robotik) kapsamlı eğitim müfredatı tasarımı.</p>
+                    <span class="tag">Eğitim</span>
+                    <span class="tag">Yapay Zeka</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 [Adınız Soyadınız] - Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body>
+</html>
